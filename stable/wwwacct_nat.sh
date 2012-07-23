@@ -40,9 +40,9 @@ else
 echo "| /bin/sed                  [FAIL]   "
 fi
 mywget="`which /usr/bin/wget 2> /dev/null`"; if [ "$mywget" != "" ]; then
-echo "| $mywget                  [ OK ]   "
+echo "| $mywget             [ OK ]   "
 else
-echo "| /usr/bin/wget                  [FAIL]   "
+echo "| /usr/bin/wget             [FAIL]   "
 fi
 echo "+===================================+"
 sleep 2
@@ -225,11 +225,9 @@ fi;;
   6)
 echo "Downloading Update Script..."
 echo "Please Wait"
-wget -O /scripts/wwwacct_nat_update.sh https://raw.github.com/cpanelscripts/wwwacct_nat/master/wwwacct_nat_update.sh 1> /dev/null
+wget -q -O /scripts/wwwacct_nat_update.sh https://raw.github.com/cpanelscripts/wwwacct_nat/master/wwwacct_nat_update.sh
 echo ""
-chmod 0755 wwwacct_nat_update.sh && /scripts/wwwacct_nat_update.sh
-echo "Exiting"
-exit;;
+chmod 0755 wwwacct_nat_update.sh && /scripts/wwwacct_nat_update.sh && exit;;
   7)
 echo "Thanks For Using This Script"
 echo "Quitting"

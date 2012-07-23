@@ -11,7 +11,7 @@ echo "What Build Would You Like?"
 echo "edge? stable? release?"
 read mybuild
 echo "Checking GitHubs Version Number"
-mygitversion=$(curl -s -B -L https://raw.github.com/cpanelscripts/wwwacct_nat/master/stable/wwwacct_nat.sh | grep myversion= | cut -d'=' -f2)
+mygitversion=$(curl -s -B -L https://raw.github.com/cpanelscripts/wwwacct_nat/master/$myfile/wwwacct_nat.sh | grep myversion= | cut -d'=' -f2)
 echo ""
 
 function check_update {
@@ -29,6 +29,7 @@ else
     update
     else
     echo "no update is needed"
+    $myfile
   fi
 fi
 }
@@ -37,7 +38,7 @@ function get_update {
   if [ ! -f $myfile.tmp ]; then
     echo "attempting to download update from github"
     myupdateurl="https://raw.github.com/cpanelscripts/wwwacct_nat/master/$mybuild/wwwacct_nat.sh"
-    wget -O $myfile.tmp $myupdateurl 1> /dev/null
+    wget -q -O $myfile.tmp $myupdateurl
   fi
   echo "checking again (in case download failed)"
   if [ ! -f $myfile.tmp ]; then
