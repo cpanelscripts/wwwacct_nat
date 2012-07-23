@@ -225,7 +225,7 @@ fi;;
   6)
 echo "Downloading Update Script..."
 echo "Please Wait"
-wget -o /scripts/wwwacct_nat_update.sh https://raw.github.com/cpanelscripts/wwwacct_nat/master/wwwacct_nat_update.sh 1> /dev/null
+wget -O /scripts/wwwacct_nat_update.sh https://raw.github.com/cpanelscripts/wwwacct_nat/master/wwwacct_nat_update.sh 1> /dev/null
 echo ""
 chmod 0755 wwwacct_nat_update.sh && /scripts/wwwacct_nat_update.sh
 echo "Exiting"
