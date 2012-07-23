@@ -39,6 +39,11 @@ echo "| $mysed                  [ OK ]   "
 else
 echo "| /bin/sed                  [FAIL]   "
 fi
+mywget="`which /usr/bin/wget 2> /dev/null`"; if [ "$mywget" != "" ]; then
+echo "| $mywget                  [ OK ]   "
+else
+echo "| /usr/bin/wget                  [FAIL]   "
+fi
 echo "+===================================+"
 sleep 2
 addr=$(awk '/ADDR/ { print $2 }' /etc/wwwacct.conf)
@@ -218,10 +223,11 @@ echo "$domain.db Not Found"
 echo "Halted Returning To Menu"
 fi;;
   6)
-echo "Checking For Updates..."
+echo "Downloading Update Script..."
 echo "Please Wait"
-wget https://raw.github.com/cpanelscripts/wwwacct_nat/master/wwwacct_nat_update.sh
-echo "Please Run wwwacct_nat_update.sh"
+wget -o /scripts/wwwacct_nat_update.sh https://raw.github.com/cpanelscripts/wwwacct_nat/master/wwwacct_nat_update.sh 1> /dev/null
+echo ""
+chmod 0755 wwwacct_nat_update.sh && /scripts/wwwacct_nat_update.sh
 echo "Exiting"
 exit;;
   7)
