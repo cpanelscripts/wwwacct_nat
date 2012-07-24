@@ -11,7 +11,7 @@ echo "What Build Would You Like?"
 echo "edge? stable? release?"
 read mybuild
 echo "Checking GitHubs Version Number"
-mygitversion=$(curl -s -B -L https://raw.github.com/cpanelscripts/wwwacct_nat/master/$myfile/wwwacct_nat.sh | grep myversion= | cut -d'=' -f2)
+mygitversion=$(curl -s -B -L https://raw.github.com/cpanelscripts/wwwacct_nat/master/$mybuild/wwwacct_nat.sh | grep myversion= | cut -d'=' -f2)
 echo ""
 
 function check_update {
